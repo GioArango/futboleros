@@ -5,6 +5,7 @@ export const LeagueTeamProvider = ({ children }) => {
 
     const [leaguesData, setLeagueData] = useState();
     const [teamsData, setTeamsData] = useState();
+    const [playersData, setPlayersData] = useState();
 
     const setLeagues = ( leagues ) => {
         setLeagueData(leagues);
@@ -14,8 +15,12 @@ export const LeagueTeamProvider = ({ children }) => {
         setTeamsData(teams)
     }
 
+    const setPlayers = ( players ) => {
+        setPlayersData(players);
+    }
+
     return (
-        <LeagueTeamContext.Provider value={{ leaguesData, setLeagues, teamsData, setTeams }}>
+        <LeagueTeamContext.Provider value={{ leaguesData, setLeagues, teamsData, setTeams, playersData, setPlayers }}>
             {children}
         </LeagueTeamContext.Provider>
     )

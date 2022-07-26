@@ -145,6 +145,10 @@ body{
     background: linear-gradient(45deg,#FF5370,#ff869a);
 }
 
+.bg-c-dark {
+    background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+
 .m-t-10 {
     margin-top: 10px;
 }
