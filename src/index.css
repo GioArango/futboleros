@@ -113,13 +113,21 @@ body{
     color: #919aa3!important;
 }
 
-.user-card .card-block .activity-leval li.active {
+.user-card .card-block .activity-leval li.good {
     background-color: #2ed8b6;
+}
+
+.user-card .card-block .activity-leval li.middle {
+    background-color: orange;
+}
+
+.user-card .card-block .activity-leval li.low {
+    background-color: red;
 }
 
 .user-card .card-block .activity-leval li {
     display: inline-block;
-    width: 15%;
+    width: 7.5%;
     height: 4px;
     margin: 0 3px;
     background-color: #ccc;

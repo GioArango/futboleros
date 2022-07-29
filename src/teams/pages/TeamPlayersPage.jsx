@@ -1,20 +1,19 @@
 import { useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FetchHelper } from '../../helpers/FetchHelper';
-import { LeagueTeamContext } from '../../context/LeagueTeamContext';
 import { PlayersList } from '../components/PlayersList';
 import { Loader } from '../../ui/components';
+import { sortPlayers } from '../helpers';
 
 export const TeamPlayersPage = () => {
 
     const { idTeam } = useParams();
-    const { setPlayers, playersData } = useContext(LeagueTeamContext);
     const [load, setLoad] = useState(true);
     const [playersList, setPlayersList] = useState();
-    const allPlayers = [];
+    let allPlayers = [];
 
     const getPlayers = async ( page = 1 ) => {
-        const players = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/players?team=${idTeam}&season=2022&page=${page}`, 'GET');
+        const players = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/players?team=${idTeam}&season=2021&page=${page}`, 'GET');
         const { response, paging } = players;
         const { total, current } = paging;
 
@@ -29,11 +28,9 @@ export const TeamPlayersPage = () => {
     
     
     const getPlayersData = async ( page = 1 ) => {
-        const { players, currentPage, totalPages } = await getPlayers( page );        
-        
-        players.forEach(player => {
-            allPlayers.push(player);
-        });
+        const { players, currentPage, totalPages } = await getPlayers( page );
+
+        allPlayers.push(...players);
         
         console.log('curent', currentPage, 'total', totalPages);
         if( currentPage < totalPages ) {
@@ -44,9 +41,7 @@ export const TeamPlayersPage = () => {
             }, 1500);
 
         } else {
-            allPlayers.filter( (idPlayer, index) => {
-                return allPlayers.indexOf(idPlayer) === index
-            });
+            allPlayers = sortPlayers(allPlayers);
             setPlayersList(allPlayers);
             console.log('Data', allPlayers);
             setLoad(false);

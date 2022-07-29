@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 export const Navbar = ({ navLogo = {}, optionsNavigate = [] }) => {
 
     const { logo, label, homePath } = navLogo;
-    console.log(optionsNavigate);
     return (
         <nav className="navbar navbar-expand-sm navbar-light bg-light p-2">
             <div className='d-inline'>
@@ -32,40 +31,8 @@ export const Navbar = ({ navLogo = {}, optionsNavigate = [] }) => {
                                     </NavLink>
                         })
                     }
-
-                    {/* <NavLink
-                        className="nav-item nav-link"
-                        to="/teams/info"
-                    >
-                        Information
-                    </NavLink>
-
-                    <NavLink
-                        className="nav-item nav-link"
-                        to="/teams/events"
-                    >
-                        Events
-                    </NavLink>
-
-                    <NavLink
-                        className="nav-item nav-link"
-                        to="/teams/events"
-                    >
-                        Players
-                    </NavLink> */}
                 </div>
             </div>
-
-            {/* <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
-                    <NavLink 
-                        className="nav-item nav-link" 
-                        to="/login"
-                    >
-                        Logout
-                    </NavLink>
-                </ul>
-            </div> */}
         </nav>
     )
 }
