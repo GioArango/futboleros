@@ -56,10 +56,7 @@ export const TeamPlayersPage = () => {
 
 
     return (
-        <>
-            <h1>TeamPlayers</h1>
-            <hr />
-
+        <div className='my-3'>
             {
                 (load)
                 ?
@@ -69,6 +66,6 @@ export const TeamPlayersPage = () => {
                     playersList={playersList}
                 />                
             }
-        </>
+        </div>
     )
 }
