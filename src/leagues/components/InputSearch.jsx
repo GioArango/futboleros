@@ -1,24 +1,26 @@
 
 export const InputSearch = ({ inputName, inputValue, onChange, onSearchSubmit }) => {
     return (
-        <form className="container row position-relative my-3" onSubmit={ onSearchSubmit }>
-            <div className="d-flex justify-content-center row">
-                <input 
-                    type="text" 
-                    className="form-control w-50" 
-                    placeholder="¿Cuál es el país de la liga?"
-                    name={ inputName }
-                    value={ inputValue }
-                    onChange={ onChange }
-                />
-            </div>
-            <div className="d-flex justify-content-center row">
-                <button 
-                    type="submit" 
-                    className="btn btn-primary mt-2 mx-2 col-3"
-                >
-                    Buscar
-                </button>              
+        <form className="d-flex justify-content-center row" onSubmit={onSearchSubmit}>
+            <div className="row">
+                <div className="input-group">
+                    <div className="input-group input-group-lg mb-3">
+                        <input
+                            type="text"
+                            className="form-control text-center rounded-start border border-end-0"
+                            placeholder="Type a league's country"
+                            name={inputName}
+                            value={inputValue}
+                            onChange={onChange}
+                        />
+                        <button
+                            type="submit"
+                            className="input-group-text"
+                        >
+                            <i className="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </form>
     )

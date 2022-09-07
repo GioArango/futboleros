@@ -46,14 +46,7 @@ export const TeamInfo = ({ team, venue, onBackNavigate }) => {
                     </div>
                 </div>
 
-
             </div>
-            <button
-                onClick={onBackNavigate}
-                className="btn btn-outline-success w-25 my-4"
-            >
-                Atrás
-            </button>
         </div>
     )
 }

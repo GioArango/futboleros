@@ -25,6 +25,7 @@ export const Navbar = ({ navLogo = {}, optionsNavigate = [], onSelectNav }) => {
                             return <NavLink
                                 key={option.id}
                                 className="nav-item nav-link"                                
+                                // className={(option.value === option.value ? "nav-item nav-link" : "bg-primary")}                                
                                 to={''}
                                 onClick={() => onSelectNav(option.value)}
                             >

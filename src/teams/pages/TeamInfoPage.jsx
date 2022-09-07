@@ -9,35 +9,35 @@ import { TeamPlayersPage } from "./TeamPlayersPage";
 export const TeamInfoPage = () => {
 
   const { teamsData } = useContext(LeagueTeamContext);
-  const [ optionNav, setOptionNav ] = useState(null);
+  const [optionNav, setOptionNav] = useState(null);
   const { idLeague, idTeam } = useParams();
   const navigate = useNavigate();
   const teamSelected = teamsData.find(tm => tm.team.id == idTeam);
-  
+
   const navbarOptions = {
-      logo: teamSelected.team.logo,
-      label: teamSelected.team.name,
-      homePath: '/'
+    logo: teamSelected.team.logo,
+    label: teamSelected.team.name,
+    homePath: '/'
   }
 
   const optionsNavigate = [
     {
-      id: new Date().getDate() * Math.random(0,9),
+      id: new Date().getDate() * Math.random(0, 9),
       label: 'Information',
       navigate: `/teams/${idLeague}/events/${idTeam}`,
-      value:'team'
+      value: 'team'
     },
     {
-      id: new Date().getDate() * Math.random(0,9),
+      id: new Date().getDate() * Math.random(0, 9),
       label: 'Events',
       navigate: `/teams/${idLeague}/events/${idTeam}`,
-      value:'events'
+      value: 'events'
     },
     {
-      id: new Date().getDate() * Math.random(0,9),
+      id: new Date().getDate() * Math.random(0, 9),
       label: 'Players',
       navigate: `/teams/${idLeague}/players/${idTeam}`,
-      value:'players'
+      value: 'players'
     }
   ]
 
@@ -47,7 +47,7 @@ export const TeamInfoPage = () => {
     navigate(-1);
   }
 
-  const onSelectNav = ( optionLink ) => {
+  const onSelectNav = (optionLink) => {
     setOptionNav(optionLink)
   }
 
@@ -67,7 +67,7 @@ export const TeamInfoPage = () => {
   return (
     <>
 
-      <Navbar 
+      <Navbar
         navLogo={navbarOptions}
         optionsNavigate={optionsNavigate}
         onSelectNav={onSelectNav}
@@ -76,6 +76,13 @@ export const TeamInfoPage = () => {
       {
         renderSwitch(optionNav)
       }
+
+      <button
+        onClick={onBackNavigate}
+        className="btn btn-outline-success w-25 mx-5 my-3"
+      >
+        Atrás
+      </button>
     </>
 
   )

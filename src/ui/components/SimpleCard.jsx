@@ -4,12 +4,12 @@ export const SimpleCard = ({ title, img, buttonName, navigatePath }) => {
 
     return (
         <div className="my-3">
-            <div className="card w-75 text-center h-100">
-                <div className="card-header">
-                    <h5 className="card-title">{ title }</h5>
+            <div className="card text-center h-100">
+                <div className="card-header p-2">
+                    <h4 className="card-title m-0">{ title }</h4>
                 </div>
                 <div className="card-body d-flex align-content-center flex-wrap">
-                    <img src={img} className="img-fluid rounded mx-auto d-block mb-2" alt={ title } style={{ width: '180px' }} />
+                    <img src={img} className="img-fluid rounded mx-auto d-block" alt={ title } style={{ width: '180px' }} />
                 </div>
                 <div className="card-footer">
                     {/* <button

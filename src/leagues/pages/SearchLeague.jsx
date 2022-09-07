@@ -25,33 +25,41 @@ export const SearchLeague = () => {
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
-    if(searchLeague.trim().length < 1) return;
+    if (searchLeague.trim().length < 1) return;
     getLeagues();
     onResetForm();
   }
 
   return (
-    <div className="m-3">
-      <h1 className="text-center">App</h1>
-      <InputSearch 
-        inputName='searchLeague'
-        inputValue={ searchLeague }
-        onChange={ onInputChange }
-        onSearchSubmit={ onSearchSubmit }
-      />
-      
-      {
-        (loading) 
-        && <Loader />
-      }
+    <div className="container">
+      {/* <div className="d-flex justify-content-center my-5 shadow-lg"> */}
+        <div className="card my-5" style={{ width: "100%", height: "100%" }}>
+          <img src="https://i.ibb.co/GFRrFzF/audience-g2cd9f5f27-1920.jpg" alt="Football Fans" style={{ height: "10rem" }} />
+          <div className="card-body">
+            <div className="d-flex justify-content-center">
+              <InputSearch
+                inputName='searchLeague'
+                inputValue={searchLeague}
+                onChange={onInputChange}
+                onSearchSubmit={onSearchSubmit}
+              />
+            </div>
 
+            {
+              (loading)
+              && <Loader />
+            }
 
-      {
-        (leaguesData?.length > 0)
-        &&
-        <LeagueList />
-      }    
-      
+            {
+              (leaguesData?.length > 0)
+              &&
+              <LeagueList />
+            }
+
+          </div>
+        </div>
+      {/* </div> */}
+
     </div>
   )
 }
