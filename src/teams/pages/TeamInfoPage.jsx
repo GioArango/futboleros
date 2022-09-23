@@ -71,18 +71,12 @@ export const TeamInfoPage = () => {
         navLogo={navbarOptions}
         optionsNavigate={optionsNavigate}
         onSelectNav={onSelectNav}
+        onBackNavigate={onBackNavigate}
       />
 
       {
         renderSwitch(optionNav)
       }
-
-      <button
-        onClick={onBackNavigate}
-        className="btn btn-outline-success w-25 mx-5 my-3"
-      >
-        Atrás
-      </button>
     </>
 
   )

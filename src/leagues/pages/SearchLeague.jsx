@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { LeagueTeamContext } from "../../context/LeagueTeamContext";
 import { FetchHelper } from "../../helpers/FetchHelper";
 import { useForm } from "../../hooks/useForm"
-import { Loader } from "../../ui/components";
+import { Loader, PlaceholderCard } from "../../ui/components";
 import { InputSearch, LeagueList } from "../components";
 
 export const SearchLeague = () => {
@@ -17,6 +17,7 @@ export const SearchLeague = () => {
 
   const getLeagues = async () => {
     setLoading(true);
+    setLeagues([])
     const { response } = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/leagues?country=${searchLeague}`, 'GET');
     console.log(response);
     setLoading(false);
@@ -34,7 +35,7 @@ export const SearchLeague = () => {
     <div className="container">
       {/* <div className="d-flex justify-content-center my-5 shadow-lg"> */}
         <div className="card my-5" style={{ width: "100%", height: "100%" }}>
-          <img src="https://i.ibb.co/GFRrFzF/audience-g2cd9f5f27-1920.jpg" alt="Football Fans" style={{ height: "10rem" }} />
+          <img src="https://i.ibb.co/GFRrFzF/audience-g2cd9f5f27-1920.jpg" className="img-fluid" alt="Football Fans" style={{ height: "10rem" }} />
           <div className="card-body">
             <div className="d-flex justify-content-center">
               <InputSearch
@@ -47,7 +48,7 @@ export const SearchLeague = () => {
 
             {
               (loading)
-              && <Loader />
+              && <PlaceholderCard />
             }
 
             {

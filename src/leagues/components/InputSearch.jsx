@@ -1,7 +1,7 @@
 
 export const InputSearch = ({ inputName, inputValue, onChange, onSearchSubmit }) => {
     return (
-        <form className="d-flex justify-content-center row" onSubmit={onSearchSubmit}>
+        <form className="d-flex justify-content-center row w-50" onSubmit={onSearchSubmit}>
             <div className="row">
                 <div className="input-group">
                     <div className="input-group input-group-lg mb-3">

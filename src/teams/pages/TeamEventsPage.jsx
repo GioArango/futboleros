@@ -9,8 +9,9 @@ export const TeamEventsPage = () => {
   const [events, setEvents] = useState([]);
 
   const getEventsTeam = async () => {
-    const events = await FetchHelper(`https://run.mocky.io/v3/4c031d7b-9261-4ec7-b745-c3babebaae16`, 'GET');
-    // const events = await FetchHelper(`/v3/fixtures?season=2022&team=${idTeam}`, 'GET');
+    // const events = await FetchHelper(`https://run.mocky.io/v3/4c031d7b-9261-4ec7-b745-c3babebaae16`, 'GET');
+    const events = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2022&team=${idTeam}`, 'GET');
+    console.log(events)
     const { response } = events;
     setEvents(response);
     console.log(response);
@@ -25,7 +26,7 @@ export const TeamEventsPage = () => {
     <div className='container mt-3'>
 
       {
-        events.map(({ fixture, goals, league, score, teams }) => {
+        events?.map(({ fixture, goals, league, score, teams }) => {
           const splitMatchDate = fixture.date.split('T');
           const matchDate = splitMatchDate[0];
           let hourMatch = splitMatchDate[1].split('+');
