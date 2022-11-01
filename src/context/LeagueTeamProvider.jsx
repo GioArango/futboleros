@@ -3,10 +3,16 @@ import { LeagueTeamContext } from './LeagueTeamContext';
 
 export const LeagueTeamProvider = ({ children }) => {
 
-    const [leaguesData, setLeagueData] = useState();
-    const [teamsData, setTeamsData] = useState();
-    const [playersData, setPlayersData] = useState();
+    const [countriesData, setCountriesData] = useState([])
+    const [leaguesData, setLeagueData] = useState([]);
+    const [teamsData, setTeamsData] = useState([]);
+    const [playersData, setPlayersData] = useState([]);
 
+
+    const setCountries = (countries) => {
+        setCountriesData(countries)
+    }
+    
     const setLeagues = ( leagues ) => {
         setLeagueData(leagues);
     }
@@ -20,7 +26,7 @@ export const LeagueTeamProvider = ({ children }) => {
     }
 
     return (
-        <LeagueTeamContext.Provider value={{ leaguesData, setLeagues, teamsData, setTeams, playersData, setPlayers }}>
+        <LeagueTeamContext.Provider value={{ leaguesData, setLeagues, teamsData, setTeams, playersData, setPlayers, countriesData, setCountries }}>
             {children}
         </LeagueTeamContext.Provider>
     )

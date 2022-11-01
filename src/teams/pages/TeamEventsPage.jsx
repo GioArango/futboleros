@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FetchHelper } from '../../helpers';
+import { v4 as uuid } from 'uuid'
 
 export const TeamEventsPage = () => {
 
@@ -12,7 +13,7 @@ export const TeamEventsPage = () => {
     // const events = await FetchHelper(`https://run.mocky.io/v3/4c031d7b-9261-4ec7-b745-c3babebaae16`, 'GET');
     const events = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2022&team=${idTeam}`, 'GET');
     console.log(events)
-    const { response } = events;
+    const { response } = events;    
     setEvents(response);
     console.log(response);
   }
@@ -31,7 +32,7 @@ export const TeamEventsPage = () => {
           const matchDate = splitMatchDate[0];
           let hourMatch = splitMatchDate[1].split('+');
           hourMatch = hourMatch[0];
-          return <table className="table align-middle">
+          return <table key={uuid()} className="table align-middle">
             <thead>
               <tr>
                 <th scope="col" className='fs-6' colSpan={2}><img src={league.logo} width="30rem" /> {league.name}</th>
