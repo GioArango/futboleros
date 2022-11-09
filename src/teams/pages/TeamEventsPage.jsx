@@ -1,21 +1,37 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FetchHelper } from '../../helpers';
 import { v4 as uuid } from 'uuid'
+import { Loader } from '../../ui/components';
+import { PlaceholderEvent } from '../../ui/components/PlaceholderEvent';
 
 export const TeamEventsPage = () => {
 
   const { idTeam } = useParams();
   const [events, setEvents] = useState([]);
+  const [load, setLoad] = useState(false)
 
   const getEventsTeam = async () => {
     // const events = await FetchHelper(`https://run.mocky.io/v3/4c031d7b-9261-4ec7-b745-c3babebaae16`, 'GET');
-    const events = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2022&team=${idTeam}`, 'GET');
-    console.log(events)
-    const { response } = events;    
-    setEvents(response);
-    console.log(response);
+    try {
+      setLoad(true)
+      const events = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2022&team=${idTeam}`, 'GET');
+      console.log(events)
+      const { response } = events;
+
+      const sortedEvents = response.sort((a, b) => {
+        const date1 = new Date(a.fixture.date)
+        const date2 = new Date(b.fixture.date)
+        return date1 - date2
+      })
+
+      setEvents(sortedEvents);
+    } catch (error) {
+      alert('Error obteniendo los eventos')
+    } finally {
+      setLoad(false)
+    }
   }
 
   useEffect(() => {
@@ -25,8 +41,20 @@ export const TeamEventsPage = () => {
 
   return (
     <div className='container mt-3'>
-
       {
+        (load)
+        &&
+        <>
+          <PlaceholderEvent />
+          <PlaceholderEvent />
+          <PlaceholderEvent />
+          <PlaceholderEvent />
+          <PlaceholderEvent />        
+        </>
+      }
+      {
+        (!load)
+        &&
         events?.map(({ fixture, goals, league, score, teams }) => {
           const splitMatchDate = fixture.date.split('T');
           const matchDate = splitMatchDate[0];
@@ -45,7 +73,6 @@ export const TeamEventsPage = () => {
             </thead>
             <tbody>
               <tr>
-                {/* <th scope="row">1</th> */}
                 <td width="40%" className='fs-6 text-end'><img src={teams.home.logo} width="30rem" /> <br /> {teams.home.name}</td>
                 <td width="20%" className="table-active">
                   {

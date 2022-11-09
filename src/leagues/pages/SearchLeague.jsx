@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { useContext, useState } from "react";
+
+import { useState, useEffect, useContext, memo } from "react";
 import { LeagueTeamContext } from "../../context/LeagueTeamContext";
 import { FetchHelper } from "../../helpers/FetchHelper";
 import { useForm } from "../../hooks/useForm"
 import { Loader, PlaceholderCard } from "../../ui/components";
 import { InputSearch, LeagueList, SelectCountry } from "../components";
 
-export const SearchLeague = () => {
+export const SearchLeague = memo(() => {
 
   const [loading, setLoading] = useState(false);
   const { leaguesData, setLeagues, countriesData, setCountries } = useContext(LeagueTeamContext);
@@ -84,6 +84,6 @@ export const SearchLeague = () => {
 
     </div>
   )
-}
+})
 
 

@@ -2,8 +2,9 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FetchHelper } from '../../helpers/FetchHelper';
 import { PlayersList } from '../components/PlayersList';
-import { Loader } from '../../ui/components';
+import { Loader, PlaceholderCard } from '../../ui/components';
 import { sortPlayers } from '../helpers';
+import { PlaceholderPlayerCard } from '../../ui/components/PlaceholderPlayerCard';
 
 export const TeamPlayersPage = () => {
 
@@ -12,7 +13,7 @@ export const TeamPlayersPage = () => {
     const [playersList, setPlayersList] = useState();
     let allPlayers = [];
 
-    const getPlayers = async ( page = 1 ) => {
+    const getPlayers = async (page = 1) => {
         const players = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/players?team=${idTeam}&season=2021&page=${page}`, 'GET');
         const { response, paging } = players;
         const { total, current } = paging;
@@ -25,17 +26,17 @@ export const TeamPlayersPage = () => {
 
         return data;
     }
-    
-    
-    const getPlayersData = async ( page = 1 ) => {
-        const { players, currentPage, totalPages } = await getPlayers( page );
+
+
+    const getPlayersData = async (page = 1) => {
+        const { players, currentPage, totalPages } = await getPlayers(page);
 
         allPlayers.push(...players);
-        
+
         console.log('curent', currentPage, 'total', totalPages);
-        if( currentPage < totalPages ) {
+        if (currentPage < totalPages) {
             page = currentPage + 1;
-           
+
             setTimeout(() => {
                 getPlayersData(page);
             }, 1500);
@@ -49,9 +50,9 @@ export const TeamPlayersPage = () => {
         return allPlayers;
     }
 
-    
+
     useEffect(() => {
-        getPlayersData();        
+        getPlayersData();
     }, [idTeam]);
 
 
@@ -59,12 +60,18 @@ export const TeamPlayersPage = () => {
         <div className='my-3'>
             {
                 (load)
-                ?
-                <Loader />
-                :
-                <PlayersList 
-                    playersList={playersList}
-                />                
+                    ?
+                    <div className="container">
+                        <div className="row">
+                            <PlaceholderPlayerCard />
+                            <PlaceholderPlayerCard />
+                            <PlaceholderPlayerCard />
+                        </div>
+                    </div>
+                    :
+                    <PlayersList
+                        playersList={playersList}
+                    />
             }
         </div>
     )

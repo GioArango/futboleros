@@ -10,6 +10,7 @@ export const TeamInfoPage = () => {
 
   const { teamsData } = useContext(LeagueTeamContext);
   const [optionNav, setOptionNav] = useState(null);
+  const [optionSelected, setOptionSelected] = useState('team')
   const { idLeague, idTeam } = useParams();
   const navigate = useNavigate();
   const teamSelected = teamsData.find(tm => tm.team.id == idTeam);
@@ -48,6 +49,7 @@ export const TeamInfoPage = () => {
   }
 
   const onSelectNav = (optionLink) => {
+    setOptionSelected(optionLink)
     setOptionNav(optionLink)
   }
 
@@ -72,6 +74,7 @@ export const TeamInfoPage = () => {
         optionsNavigate={optionsNavigate}
         onSelectNav={onSelectNav}
         onBackNavigate={onBackNavigate}
+        optionSelected={optionSelected}
       />
 
       {

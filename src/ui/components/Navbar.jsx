@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 
-export const Navbar = ({ navLogo = {}, optionsNavigate = [], onSelectNav, onBackNavigate }) => {
+export const Navbar = ({ navLogo = {}, optionsNavigate = [], onSelectNav, onBackNavigate, optionSelected }) => {
 
     const { logo, label, homePath } = navLogo;
 
@@ -24,8 +24,7 @@ export const Navbar = ({ navLogo = {}, optionsNavigate = [], onSelectNav, onBack
                         optionsNavigate.map(option => {
                             return <NavLink
                                 key={option.id}
-                                className="nav-item nav-link"
-                                // className={(option.value === option.value ? "nav-item nav-link" : "bg-primary")}                                
+                                className={(option.value === optionSelected ? "nav-item nav-link text-primary fw-bold" : "nav-item nav-link")}                                
                                 to={''}
                                 onClick={() => onSelectNav(option.value)}
                             >
@@ -44,7 +43,7 @@ export const Navbar = ({ navLogo = {}, optionsNavigate = [], onSelectNav, onBack
                     className="btn btn-success btn-sm mx-3"
                     style={{ width: '6rem'}}
                 >
-                    Atrás
+                    Back
                 </button>
             }
         </nav>

@@ -12,9 +12,9 @@ export const TeamsList = () => {
             {
                 teamsData.map( ({ team }) => {
                     return <SimpleCard
-                                key={ team.id } 
-                                title={ team.name }
-                                img={ team.logo }
+                                key={ team?.id } 
+                                title={ team?.name }
+                                img={ team?.logo }
                                 buttonName='Ver informacion'
                                 navigatePath={`/teams/${idLeague}/info/${team.id}`}
                             />

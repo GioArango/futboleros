@@ -1,17 +1,17 @@
 
 export const TeamInfo = ({ team, venue, onBackNavigate }) => {
     return (
-        <div className="m-5">
+        <div className="m-5 d-flex justify-content-center">
             <div className="row mt-5 border rounded shadow">
-                <div className="col-sm-4 my-2">
+                <div className="col-sm-3 my-2 d-flex justify-content-center">
                     <img
                         src={team.logo}
                         alt={team.name}
-                        className="img-thumbnail" style={{ width: '400px' }}
+                        className="img-thumbnail" style={{ width: '260px' }}
                     />
                 </div>
 
-                <div className="col-sm-8 mt-2 fst-italic">
+                <div className="col-sm-9 mt-2 fst-italic">
                     <h3 className="text-uppercase">{team.name}</h3>
 
                     <div className="row">
