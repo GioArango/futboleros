@@ -1,5 +1,6 @@
 
 import { PlayerCard } from "../../ui/components";
+import { v4 as uuid } from 'uuid'
 
 export const PlayersList = ({playersList}) => {
 
@@ -10,7 +11,7 @@ export const PlayersList = ({playersList}) => {
                 {
                     playersList.map(({ player, statistics, sort }) => {
                         return <PlayerCard
-                            key={player.id}
+                            key={uuid()}
                             player={player}
                             statistics={statistics}
                             sort={sort}

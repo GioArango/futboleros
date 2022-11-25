@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const Navbar = ({ navLogo = {}, optionsNavigate = [], onSelectNav, onBackNavigate, optionSelected }) => {
 
@@ -11,7 +12,7 @@ export const Navbar = ({ navLogo = {}, optionsNavigate = [], onSelectNav, onBack
                     className="navbar-brand"
                     to={homePath}
                 >
-                    <img src={logo} alt="Home" width="40" height="40" className='mx-2' />
+                    <LazyLoadImage src={logo} alt="Home" width="40" height="40" className='mx-2' />
                     <span className='fs-6 fw-bold lh-1 text-info'>{label}</span>
                 </Link>
 

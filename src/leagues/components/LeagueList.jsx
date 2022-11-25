@@ -1,6 +1,5 @@
 import React, { useContext, Suspense } from "react"
 import { LeagueTeamContext } from "../../context/LeagueTeamContext";
-import { PlaceholderCard } from "../../ui/components";
 import { SimpleCard } from "../../ui/components";
 
 export const LeagueList = () => {
@@ -15,7 +14,7 @@ export const LeagueList = () => {
                         key={league.id}
                         title={league.name}
                         img={league.logo}
-                        buttonName='Ver equipos'
+                        buttonName='See teams'
                         navigatePath={`/teams/${league.id}`}
                     />
                 ))

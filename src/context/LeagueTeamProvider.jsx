@@ -7,6 +7,7 @@ export const LeagueTeamProvider = ({ children }) => {
     const [leaguesData, setLeagueData] = useState([]);
     const [teamsData, setTeamsData] = useState([]);
     const [playersData, setPlayersData] = useState([]);
+    const [year, setYear] = useState(2021);
 
 
     const setCountries = (countries) => {
@@ -25,8 +26,24 @@ export const LeagueTeamProvider = ({ children }) => {
         setPlayersData(players);
     }
 
+    const setCurrentYear = ( currentYear ) => {
+        setYear(currentYear)
+    }
+
     return (
-        <LeagueTeamContext.Provider value={{ leaguesData, setLeagues, teamsData, setTeams, playersData, setPlayers, countriesData, setCountries }}>
+        <LeagueTeamContext.Provider 
+            value={{ 
+                leaguesData, 
+                setLeagues, 
+                teamsData, 
+                setTeams, 
+                playersData, 
+                setPlayers, 
+                countriesData, 
+                setCountries,
+                year,
+                setCurrentYear
+            }}>
             {children}
         </LeagueTeamContext.Provider>
     )

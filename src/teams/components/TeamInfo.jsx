@@ -1,10 +1,11 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const TeamInfo = ({ team, venue, onBackNavigate }) => {
     return (
         <div className="m-5 d-flex justify-content-center">
             <div className="row mt-5 border rounded shadow">
                 <div className="col-sm-3 my-2 d-flex justify-content-center">
-                    <img
+                    <LazyLoadImage
                         src={team.logo}
                         alt={team.name}
                         className="img-thumbnail" style={{ width: '260px' }}
@@ -36,7 +37,7 @@ export const TeamInfo = ({ team, venue, onBackNavigate }) => {
                         </div>
 
                         <div className="col-md-4 col-sm-6 d-flex justify-content-center">
-                            <img
+                            <LazyLoadImage
                                 src={venue.image}
                                 alt={venue.name}
                                 className="img-thumbnail align-middle my-2"

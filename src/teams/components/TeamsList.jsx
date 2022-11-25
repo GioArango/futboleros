@@ -15,7 +15,7 @@ export const TeamsList = () => {
                                 key={ team?.id } 
                                 title={ team?.name }
                                 img={ team?.logo }
-                                buttonName='Ver informacion'
+                                buttonName='See information'
                                 navigatePath={`/teams/${idLeague}/info/${team.id}`}
                             />
                 })

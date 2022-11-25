@@ -9,7 +9,7 @@ import { TeamsList } from '../components/TeamsList';
 export const TeamsContentPage = () => {
 
     const { idLeague } = useParams();
-    const { leaguesData, teamsData, setTeams } = useContext(LeagueTeamContext);
+    const { leaguesData, teamsData, setTeams, year } = useContext(LeagueTeamContext);
     const leagueInfo = leaguesData.find(logo => logo.league.id == idLeague);
     const navbarOptions = {
         logo: leagueInfo.league.logo,
@@ -17,11 +17,8 @@ export const TeamsContentPage = () => {
         homePath: '/search'
     }
 
-    // const { year } = useGetTime();
-    // console.log('year',year);
-
     const getTeams = async () => {
-        const resp = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/teams?league=${idLeague}&season=2022`, 'GET');
+        const resp = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/teams?league=${idLeague}&season=${year}`, 'GET');
         const { response } = resp;
         setTeams(response);
         console.log(response);

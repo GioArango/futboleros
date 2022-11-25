@@ -5,10 +5,10 @@ export const useGetTime = () => {
     const [year, setYear] = useState();
     
     useEffect(() => {
-      getFecha();
+      getCurrentYear();
     }, []);
 
-    const getFecha = () => {
+    const getCurrentYear = () => {
         let actuallyYear = new Date().getFullYear();
         setYear(actuallyYear);
     }

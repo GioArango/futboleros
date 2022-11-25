@@ -1,7 +1,7 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSoccerBall, faClock, faCalendarDays, faWeightScale, faPersonArrowUpFromLine, faEarthAmericas, faPeopleArrows, faMitten } from '@fortawesome/free-solid-svg-icons';
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { PlayerRaiting } from '../../teams/components/';
 
 export const PlayerCard = ({ player, statistics, sort }) => {
@@ -10,11 +10,11 @@ export const PlayerCard = ({ player, statistics, sort }) => {
         <div className="col-md-4">
             <div className="card user-card">
                 <div className="card-header bg-dark bg-gradient d-block">
-                    <img src={`https://countryflagsapi.com/png/${player.nationality}`} alt={`${player.nationality} flag`} style={{ width: '30px' }} />
+                    <LazyLoadImage src={`https://countryflagsapi.com/png/${player.nationality}`} alt={`${player.nationality} flag`} style={{ width: '30px' }} />
                 </div>
                 <div className="card-block">
                     <div className="user-image">
-                        <img src={player.photo} className="rounded-circle my-2" alt={player.firstname} />
+                        <LazyLoadImage src={player.photo} className="rounded-circle my-2" alt={player.firstname} />
                     </div>
                     <h6 className="f-w-600">{player.name}</h6>
                     <div className="container my-3">

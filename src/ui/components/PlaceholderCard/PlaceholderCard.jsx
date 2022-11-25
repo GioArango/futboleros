@@ -2,7 +2,7 @@ import React from 'react'
 import './PlaceholderCard.css'
 
 export const PlaceholderCard = () => {
-    const arr = new Array(3)
+    
     return (
 
         <div className="bg-success bg-opacity-25 rounded my-3 row row-cols-md-3 d-flex justify-content-center">

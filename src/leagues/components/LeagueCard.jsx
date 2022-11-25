@@ -23,7 +23,7 @@ export const LeagueCard = ({ id, logo, name, type }) => {
         <SimpleCard 
             title={ name }
             img={ logo }
-            buttonName='Ver equipos'
+            buttonName='See teams'
             navigatePath={`/teams/${id}`}
         />
     )

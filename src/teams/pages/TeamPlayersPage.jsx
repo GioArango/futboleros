@@ -1,20 +1,21 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FetchHelper } from '../../helpers/FetchHelper';
 import { PlayersList } from '../components/PlayersList';
-import { Loader, PlaceholderCard } from '../../ui/components';
 import { sortPlayers } from '../helpers';
 import { PlaceholderPlayerCard } from '../../ui/components/PlaceholderPlayerCard';
+import { LeagueTeamContext } from '../../context/LeagueTeamContext';
 
 export const TeamPlayersPage = () => {
 
     const { idTeam } = useParams();
     const [load, setLoad] = useState(true);
     const [playersList, setPlayersList] = useState();
+    const { year } = useContext(LeagueTeamContext);
     let allPlayers = [];
 
     const getPlayers = async (page = 1) => {
-        const players = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/players?team=${idTeam}&season=2021&page=${page}`, 'GET');
+        const players = await FetchHelper(`https://api-football-v1.p.rapidapi.com/v3/players?team=${idTeam}&season=${year}&page=${page}`, 'GET');
         const { response, paging } = players;
         const { total, current } = paging;
 
